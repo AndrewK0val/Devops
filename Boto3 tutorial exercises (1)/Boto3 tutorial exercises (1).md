@@ -24,15 +24,15 @@ The Elastic Compute Cloud (EC2) is a service for managing virtual machines runni
 
 For our first script, let’s list the instances we have running in EC2. We can get this information with just a few short lines of code. First, we’ll import the boto3 library. Using the library, we’ll create an EC2 resource. This is like a handle to the EC2 console that we can use in our script. Finally, we’ll use the EC2 resource to get all of the instances and then print their instance ID and state. Here’s what the script looks like: 
 
-**#!/usr/bin/env python3** 
+``````
+#!/usr/bin/env python3 
 
-**import boto3** 
+import boto3
 
-**ec2 = boto3.resource('ec2')** 
-
-**for instance in ec2.instances.all():** 
-
-`    `**print (instance.id, instance.state)** 
+ec2 = boto3.resource('ec2') 
+for instance in ec2.instances.all(): 
+    print (instance.id, instance.state)
+``````
 
 Download this file from Moodle and save as list\_instances.py and change the mode to executable. That will allow you to run the script directly from the command line – remember you use **chmod +x** on the remaining scripts to get them running. Of course, you can edit these files if you want to try out different boto3 features. 
 
