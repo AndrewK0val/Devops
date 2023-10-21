@@ -21,13 +21,18 @@ def create_s3_bucket_using_client(bucket_name, aws_region):
 
     return response
 
-if __name__ == '__main__':
-    create_s3_bucket_using_client(BUCKET_NAME, AWS_REGION)
-    print(f"AWS s3 bucket '{BUCKET_NAME}' has been created")
 
-try:
-    response = s3.Object(BUCKET_NAME, OBJECT_NAME).put(
-        Body=open(OBJECT_NAME, 'rb'))
-    print(response)
-except Exception as error:
-    print(error)
+def put_stuff_in_bucket(OBJECT_NAME, BUCKET_NAME):
+    s3_bucket = boto3.resource("s3") 
+
+
+    if __name__ == '__main__':
+        create_s3_bucket_using_client(BUCKET_NAME, AWS_REGION)
+        print(f"AWS s3 bucket '{BUCKET_NAME}' has been created")
+
+    try:
+        response = s3_bucket.Object(BUCKET_NAME, OBJECT_NAME).put(
+            Body=open(OBJECT_NAME, 'rb'))
+        print(response)
+    except Exception as error:
+        print(error)
